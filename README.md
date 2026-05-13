@@ -16,7 +16,7 @@
     <img src=assets/pipeline.png width=100% />
 </div>
 
-*Official code and data of the paper RPC-Bench: A Fine-grained Benchmark for Research Paper Comprehension.*
+*Official code and data of the paper RPC-Bench: A Fine-grained Benchmark for Research Paper Comprehension (ACL 2026).*
 
 ***
 
