@@ -1,0 +1,5 @@
+{"id":"q1","part_idx":0,"predicted_answer":"answer C1","score":"```json\n{\"Correctness\":{\"rating\":\"3.30\"},\"Completeness\":{\"rating\":\"3.30\"},\"Conciseness\":{\"rating\":\"3.40\"}}\n```"}
+{"id":"q2","part_idx":0,"predicted_answer":"answer C2","score":"```json\n{\"Correctness\":{\"rating\":\"3.40\"},\"Completeness\":{\"rating\":\"3.40\"},\"Conciseness\":{\"rating\":\"3.20\"}}\n```"}
+{"id":"q3","part_idx":0,"predicted_answer":"answer C3","score":"```json\n{\"Correctness\":{\"rating\":\"3.50\"},\"Completeness\":{\"rating\":\"3.50\"},\"Conciseness\":{\"rating\":\"3.30\"}}\n```"}
+{"id":"q4","part_idx":0,"predicted_answer":"answer C4","score":"```json\n{\"Correctness\":{\"rating\":\"3.20\"},\"Completeness\":{\"rating\":\"3.20\"},\"Conciseness\":{\"rating\":\"3.10\"}}\n```"}
+{"id":"q5","part_idx":0,"predicted_answer":"answer C5","score":"```json\n{\"Correctness\":{\"rating\":\"3.10\"},\"Completeness\":{\"rating\":\"3.10\"},\"Conciseness\":{\"rating\":\"3.40\"}}\n```"}

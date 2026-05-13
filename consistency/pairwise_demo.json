@@ -1,0 +1,5 @@
+{"id":"q1","part_idx":0,"file_a":"alpha","file_b":"beta","better":"alpha"}
+{"id":"q2","part_idx":0,"file_a":"gamma","file_b":"beta","better":"beta"}
+{"id":"q3","part_idx":0,"file_a":"alpha","file_b":"gamma","better":"alpha"}
+{"id":"q4","part_idx":0,"file_a":"alpha","file_b":"beta","better":"beta"}
+{"id":"q5","part_idx":0,"file_a":"beta","file_b":"gamma","better":"gamma"}
