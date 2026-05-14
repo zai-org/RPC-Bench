@@ -8,7 +8,7 @@
     🌐 <a href="https://rpc-bench.github.io/" target="_blank">Project Page</a> •
     📖 <a href="https://arxiv.org/abs/2601.14289" target="_blank">Paper</a>
     🤗 <a href="https://huggingface.co/datasets/zai-org/RPC-Bench" target="_blank">Hugging Face</a> •
-    🧭 <a href="https://community.modelscope.cn/ZhipuAI/RPC-Bench" target="_blank">ModelScope</a>
+    🧭 <a href="https://modelscope.cn/datasets/ZhipuAI/RPC-Bench" target="_blank">ModelScope</a>
 </p>
 
 <div align="center">
