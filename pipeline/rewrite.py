@@ -7,7 +7,6 @@ from typing import Any, Dict, Iterable, List
 
 from prompt import rewrite_prompt
 
-
 BASE_DIR = Path(__file__).resolve().parent
 INPUT_FILE = BASE_DIR / "output" / "example_decompose.jsonl"
 
@@ -22,7 +21,9 @@ if REWRITE_MODEL not in {"glm", "deepseek"}:
 
 OUTPUT_FILE = BASE_DIR / "output" / f"example_rewrite_{REWRITE_MODEL}.jsonl"
 RAW_OUTPUT_FILE = BASE_DIR / "output" / f"example_rewrite_{REWRITE_MODEL}_raw.jsonl"
-ERROR_OUTPUT_FILE = BASE_DIR / "output" / f"example_rewrite_{REWRITE_MODEL}_errors.jsonl"
+ERROR_OUTPUT_FILE = (
+    BASE_DIR / "output" / f"example_rewrite_{REWRITE_MODEL}_errors.jsonl"
+)
 
 
 def read_jsonl(file_path: Path) -> Iterable[Dict[str, Any]]:
@@ -34,7 +35,9 @@ def read_jsonl(file_path: Path) -> Iterable[Dict[str, Any]]:
 
 
 def build_rewrite_message(review: str, rebuttal: str) -> str:
-    return f"{rewrite_prompt}\nInput:\nreview: {review}\nrebuttal: {rebuttal}\nOutput:\n"
+    return (
+        f"{rewrite_prompt}\nInput:\nreview: {review}\nrebuttal: {rebuttal}\nOutput:\n"
+    )
 
 
 def call_glm(message: str) -> str:
@@ -42,7 +45,9 @@ def call_glm(message: str) -> str:
 
     api_key = os.getenv("GLM_API_KEY") or os.getenv("ZHIPUAI_API_KEY")
     if not api_key:
-        raise EnvironmentError("Set GLM_API_KEY or ZHIPUAI_API_KEY before running rewrite.py.")
+        raise EnvironmentError(
+            "Set GLM_API_KEY or ZHIPUAI_API_KEY before running rewrite.py."
+        )
 
     client = ZhipuAI(api_key=api_key)
     response = client.chat.completions.create(

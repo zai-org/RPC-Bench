@@ -141,4 +141,3 @@ FILTER_SLEEP_SECONDS=1
 - `*_filter_raw.jsonl` files preserve original GLM filter responses.
 - `*_errors.jsonl` and `*_filter_errors.jsonl` files record parsing failures without stopping the whole run.
 - `*_filtered.jsonl` files contain only item-level rows whose filter decision is `keep=true`.
-

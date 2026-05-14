@@ -1,4 +1,4 @@
-decompose_prompt = '''You are an excellent reviewer of papers. You are tasked with extracting QA pairs from the "review", "rebuttal" and "extra_rebuttal" sections of a conference paper submission. This process includes identifying "review" provided by reviewers and pairing them with the corresponding answers authored by the paper's authors, utilizing content from both the "rebuttal" and any relevant "extra_rebuttal" sections. 
+decompose_prompt = """You are an excellent reviewer of papers. You are tasked with extracting QA pairs from the "review", "rebuttal" and "extra_rebuttal" sections of a conference paper submission. This process includes identifying "review" provided by reviewers and pairing them with the corresponding answers authored by the paper's authors, utilizing content from both the "rebuttal" and any relevant "extra_rebuttal" sections.
     Your goals are: Extract and classify the QA pairs. Ensure that references and citations in the rebuttal are preserved in their original format within the answers, maintaining the academic rigor and clarity. Determine whether each question-answer pair is 'multimodal-related,' a broad concept that includes questions explicitly about the figures and tables in the paper or questions that can only be answered by referring to the contents of these figures and tables.
 
     Input Structure:
@@ -41,7 +41,7 @@ decompose_prompt = '''You are an excellent reviewer of papers. You are tasked wi
 
     > I think the draft would become better if there is a more complete explanation and figures about the self-attention with recurrence (RSA) operation.
 
-    Thank you for this instructive comment. Following your suggestions, we have provided a graphical illustration of a single headed RSA module in Figure 1 (d) on Page 2, and a more detailed explanation about the operation of RSA has been given in the paragraph of "Operation of multihead RSA modules" on Page 5.       
+    Thank you for this instructive comment. Following your suggestions, we have provided a graphical illustration of a single headed RSA module in Figure 1 (d) on Page 2, and a more detailed explanation about the operation of RSA has been given in the paragraph of "Operation of multihead RSA modules" on Page 5.
 
     In the meanwhile, we have also reorganized the whole Section 3 to better explain the proposed RSA. Specifically,
     For a single head RSA, we have devoted a paragraph right after equation (4) to detail the different types of REMs i.e. $\mathbf{P}$ in the paper.
@@ -82,7 +82,7 @@ decompose_prompt = '''You are an excellent reviewer of papers. You are tasked wi
     | RSA-BRT             | 35,080,943 | **1.120** | 41,905,913 | **1.104** | 48,730,883 | **1.092** | 55,555,853 | **1.072** |
     | Increase in #Params | 35         |           | 45         |           | 55         |           | 65         |           |
 
-    It can be seen that, with only less than 100 new parameters, RSA-BRT can achieve some improvement over the baseline BRT. More importantly, the advantage can be consistently observed for all model sizes.     
+    It can be seen that, with only less than 100 new parameters, RSA-BRT can achieve some improvement over the baseline BRT. More importantly, the advantage can be consistently observed for all model sizes.
 
 
 
@@ -141,14 +141,14 @@ decompose_prompt = '''You are an excellent reviewer of papers. You are tasked wi
             "is_multimodal_related": true
         }
     ]
-    
+
     Input:
     review: -       The idea of utilizing dataset exchangeability to identify test set contamination is novel and interesting.
     -       The proposed sharded likelihood comparison test addresses the tradeoff between statistical power and computational requirements of the permutation test, which is promising. The sharded rank comparison test also provides (asymptotic) guarantees on false positive rates.
-    -       Experimental results are promising. A GPT-2 model is trained from scratch on standard pretraining data and known test sets to verify the efficiency of the proposed method in identifying test set contamination. The method is also tested with an existing model, LLaMA2, on the MMLU dataset, showing general agreement with the contamination study results.   
+    -       Experimental results are promising. A GPT-2 model is trained from scratch on standard pretraining data and known test sets to verify the efficiency of the proposed method in identifying test set contamination. The method is also tested with an existing model, LLaMA2, on the MMLU dataset, showing general agreement with the contamination study results.
     -       Although a more efficient sharded rank comparison test is proposed, the computational complexity is still considerable. For example, testing 49 files using 1000 permutations per shard can take 12 hours for LLaMA2.
     -       There is no comparison with other baseline methods.
-    -       The method relies on a strong assumption of data exchangeability, which may not hold in real-world datasets.     
+    -       The method relies on a strong assumption of data exchangeability, which may not hold in real-world datasets.
     If a dataset is not exchangeable, how effective is the method?
 
     rebuttal: Thank you for your thorough review and valuable feedback on our work.
@@ -218,10 +218,10 @@ decompose_prompt = '''You are an excellent reviewer of papers. You are tasked wi
             "is_multimodal_related": false
         }
     ]
-    '''
+    """
 
 
-rewrite_prompt = '''You are an advanced assistant trained for academic research purposes. Your task is to process all review-rebuttal pairs into a structured Question-Answer (QA) format. For every input pair, follow these instructions:
+rewrite_prompt = """You are an advanced assistant trained for academic research purposes. Your task is to process all review-rebuttal pairs into a structured Question-Answer (QA) format. For every input pair, follow these instructions:
 
     Input Structure:
     You will process all review-rebuttal pairs, where each is provided in the following format:
@@ -321,10 +321,10 @@ rewrite_prompt = '''You are an advanced assistant trained for academic research 
     language answer.
     - If the selected category is "Claim Verification", the answer must be exactly "True" or "False".
     - Do not invent facts beyond the rebuttal.
-    '''
+    """
 
 
-quality_filter_prompt = '''You are a strict quality filter for OpenReview-derived academic data.
+quality_filter_prompt = """You are a strict quality filter for OpenReview-derived academic data.
 
 Your task is to decide whether an item should be kept for building an academic QA benchmark.
 The item may come from either:
@@ -358,4 +358,4 @@ Return only valid JSON:
   "reason": "short reason for the decision",
   "filter_type": "none | temporary_or_editorial_issue | external_resource_dependency | non_substantive_commitment"
 }
-'''
+"""

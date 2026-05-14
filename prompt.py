@@ -1,5 +1,5 @@
 user_prompt_augment = "Evaluate and rate the quality of the following predicted answer to an academic question according to the evaluation characteristics given in the system prompt. \n\n<paper-title>{title}</paper-title>\n\n<paper-abstract>{abstract}</paper-abstract>\n\n<question>{question}</question>\n\n<reference-answer>{reference_answer}</reference-answer>\n\n<predicted-answer>{predicted_answer}</predicted-answer>\n\n"
-system_prompt_conciseness_augment = '''<Context>
+system_prompt_conciseness_augment = """<Context>
 Academic question answering is the process of thoroughly reading and analyzing a scientific paper in order to generate answers to specific questions based solely on the paper’s content, arguments, and data. Unlike open-domain or general question answering, which may draw on external sources or background knowledge, academic QA is strictly limited to information contained within the source paper itself. This task demands not only accurate extraction of factual information, but also the interpretation of experimental results, logical reasoning, and careful understanding of nuanced arguments as presented by the authors. Answers in this context must faithfully and objectively reflect the ideas, evidence, and intentions of the original work, ensuring that each response is both accurate and limited to what is substantiated by the source material—without introducing personal opinions, assumptions, or information from outside the given paper.
 </Context>
 
@@ -27,7 +27,7 @@ For each evaluation characteristic, assign a quality score between 0.00 (very ba
 </Rating-Scale>
 
 <Response-Format>
-For each characteristic, rate the quality with a decimal score between 0.00 (very bad) and 5.00 (very good), precise to two decimal places (e.g., 4.21). Provide a short rationale for each rating. 
+For each characteristic, rate the quality with a decimal score between 0.00 (very bad) and 5.00 (very good), precise to two decimal places (e.g., 4.21). Provide a short rationale for each rating.
 Return your response in JSON format: {characteristic : {"rating": "", "rationale": ""}}
 
 <Example-Response>
@@ -42,9 +42,9 @@ Return your response in JSON format: {characteristic : {"rating": "", "rationale
 
 <Note>
 Base your evaluation solely on the paper title, abstract, question, golden answer, and predicted answer provided. Do NOT use any outside knowledge or make assumptions about the paper's content beyond what is implied or demonstrated by the golden answer. Be objective and provide clear, reasoned justification for your rating.
-</Note>'''
+</Note>"""
 
-system_prompt_correctness_augment = '''<Context>
+system_prompt_correctness_augment = """<Context>
 Academic question answering is the process of thoroughly reading and analyzing a scientific paper in order to generate answers to specific questions based solely on the paper’s content, arguments, and data. Unlike open-domain or general question answering, which may draw on external sources or background knowledge, academic QA is strictly limited to information contained within the source paper itself. This task demands not only accurate extraction of factual information, but also the interpretation of experimental results, logical reasoning, and careful understanding of nuanced arguments as presented by the authors. Answers in this context must faithfully and objectively reflect the ideas, evidence, and intentions of the original work, ensuring that each response is both accurate and limited to what is substantiated by the source material—without introducing personal opinions, assumptions, or information from outside the given paper.
 </Context>
 
@@ -72,7 +72,7 @@ For each evaluation characteristic, assign a quality score between 0.00 (very ba
 </Rating-Scale>
 
 <Response-Format>
-For each characteristic, rate the quality with a decimal score between 0.00 (very bad) and 5.00 (very good), precise to two decimal places (e.g., 4.21). Provide a short rationale for each rating. 
+For each characteristic, rate the quality with a decimal score between 0.00 (very bad) and 5.00 (very good), precise to two decimal places (e.g., 4.21). Provide a short rationale for each rating.
 Return your response in JSON format: {characteristic : {"rating": "", "rationale": ""}}
 
 <Example-Response>
@@ -87,9 +87,9 @@ Return your response in JSON format: {characteristic : {"rating": "", "rationale
 
 <Note>
 Base your evaluation solely on the paper title, abstract, question, golden answer, and predicted answer provided. Do NOT use any outside knowledge or make assumptions about the paper's content beyond what is implied or demonstrated by the golden answer. Be objective and provide clear, reasoned justification for your rating.
-</Note>'''
+</Note>"""
 
-system_prompt_completeness_augment = '''<Context>
+system_prompt_completeness_augment = """<Context>
 Academic question answering is the process of thoroughly reading and analyzing a scientific paper in order to generate answers to specific questions based solely on the paper’s content, arguments, and data. Unlike open-domain or general question answering, which may draw on external sources or background knowledge, academic QA is strictly limited to information contained within the source paper itself. This task demands not only accurate extraction of factual information, but also the interpretation of experimental results, logical reasoning, and careful understanding of nuanced arguments as presented by the authors. Answers in this context must faithfully and objectively reflect the ideas, evidence, and intentions of the original work, ensuring that each response is both accurate and limited to what is substantiated by the source material—without introducing personal opinions, assumptions, or information from outside the given paper.
 </Context>
 
@@ -117,7 +117,7 @@ For each evaluation characteristic, assign a quality score between 0.00 (very ba
 </Rating-Scale>
 
 <Response-Format>
-For each characteristic, rate the quality with a decimal score between 0.00 (very bad) and 5.00 (very good), precise to two decimal places (e.g., 4.21). Provide a short rationale for each rating. 
+For each characteristic, rate the quality with a decimal score between 0.00 (very bad) and 5.00 (very good), precise to two decimal places (e.g., 4.21). Provide a short rationale for each rating.
 Return your response in JSON format: {characteristic : {"rating": "", "rationale": ""}}
 
 <Example-Response>
@@ -132,4 +132,4 @@ Return your response in JSON format: {characteristic : {"rating": "", "rationale
 
 <Note>
 Base your evaluation solely on the paper title, abstract, question, golden answer, and predicted answer provided. Do NOT use any outside knowledge or make assumptions about the paper's content beyond what is implied or demonstrated by the golden answer. Be objective and provide clear, reasoned justification for your rating.
-</Note>'''
+</Note>"""

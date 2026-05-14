@@ -7,7 +7,6 @@ from typing import Any, Dict, Iterable, List, Tuple
 
 from prompt import decompose_prompt as QA_PROMPT
 
-
 BASE_DIR = Path(__file__).resolve().parent
 EXAMPLE_FILE = BASE_DIR / "example.json"
 OUTPUT_FILE = BASE_DIR / "output" / "example_decompose.jsonl"
@@ -30,8 +29,7 @@ def split_rebuttal_comments(
     comments: List[Dict[str, Any]],
     review_submitter: str,
 ) -> Tuple[List[str], List[str]]:
-    """Return (author_rebuttals, reviewer_followups) from nested comments.
-    """
+    """Return (author_rebuttals, reviewer_followups) from nested comments."""
 
     author_rebuttals: List[str] = []
     reviewer_followups: List[str] = []
@@ -46,18 +44,27 @@ def split_rebuttal_comments(
                 reviewer_followups.append(str(text))
 
         nested = comment.get("rebuttal_comments") or []
-        nested_authors, nested_reviewers = split_rebuttal_comments(nested, review_submitter)
+        nested_authors, nested_reviewers = split_rebuttal_comments(
+            nested, review_submitter
+        )
         author_rebuttals.extend(nested_authors)
         reviewer_followups.extend(nested_reviewers)
 
     return author_rebuttals, reviewer_followups
 
 
-def build_iclr2024_review_text(review: Dict[str, Any], reviewer_followups: List[str]) -> str:
+def build_iclr2024_review_text(
+    review: Dict[str, Any], reviewer_followups: List[str]
+) -> str:
     """Collect the reviewer-side fields used by the ICLR 2024 example."""
 
     parts = []
-    for key in ["weaknesses", "questions", "limitations", "questions_to_address_in_the_rebuttal"]:
+    for key in [
+        "weaknesses",
+        "questions",
+        "limitations",
+        "questions_to_address_in_the_rebuttal",
+    ]:
         if review.get(key):
             parts.append(str(review[key]))
     parts.extend(reviewer_followups)
@@ -225,5 +232,7 @@ def convert_example_to_qa() -> None:
 
 if __name__ == "__main__":
     if not os.getenv("OPENAI_API_KEY"):
-        raise EnvironmentError("Set OPENAI_API_KEY before running pipeline/decompose.py.")
+        raise EnvironmentError(
+            "Set OPENAI_API_KEY before running pipeline/decompose.py."
+        )
     convert_example_to_qa()
