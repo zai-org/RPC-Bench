@@ -1,11 +1,13 @@
+import os
+
+import fitz
 import tqdm
 from PIL import Image
-import fitz
-import os
+
 
 def pdf_to_images(pdf_dir, output_dir):
 
-    pdf_file_list = [f for f in os.listdir(pdf_dir) if f.endswith('.pdf')]
+    pdf_file_list = [f for f in os.listdir(pdf_dir) if f.endswith(".pdf")]
     pdf_file_list = [os.path.join(pdf_dir, f) for f in pdf_file_list]
 
     for pdf_file_path in pdf_file_list:
@@ -23,6 +25,7 @@ def pdf_to_images(pdf_dir, output_dir):
             image = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
             image_path = os.path.join(pdf_output_dir, f"{idx}.png")
             image.save(image_path)
+
 
 if __name__ == "__main__":
 

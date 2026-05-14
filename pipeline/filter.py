@@ -7,7 +7,6 @@ from typing import Any, Dict, Iterable
 
 from prompt import quality_filter_prompt
 
-
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "output"
 
@@ -35,7 +34,9 @@ def call_glm(message: str) -> str:
 
     api_key = os.getenv("GLM_API_KEY") or os.getenv("ZHIPUAI_API_KEY")
     if not api_key:
-        raise EnvironmentError("Set GLM_API_KEY or ZHIPUAI_API_KEY before running filter.py.")
+        raise EnvironmentError(
+            "Set GLM_API_KEY or ZHIPUAI_API_KEY before running filter.py."
+        )
 
     client = ZhipuAI(api_key=api_key)
     response = client.chat.completions.create(

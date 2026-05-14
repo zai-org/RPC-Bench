@@ -1,7 +1,9 @@
-import os
-import requests
 import json
+import os
 import time
+
+import requests
+
 
 def download_pdf(url, save_dir, filename):
     try:
@@ -9,7 +11,7 @@ def download_pdf(url, save_dir, filename):
         response = requests.get(url, stream=True)
         response.raise_for_status()
         file_path = os.path.join(save_dir, filename)
-        with open(file_path, 'wb') as f:
+        with open(file_path, "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 if chunk:
                     f.write(chunk)
@@ -23,12 +25,14 @@ def download_pdf(url, save_dir, filename):
         print(f"An unknown error occurred: {str(e)}")
     return None
 
+
 def get_file_size(file_path):
     return os.path.getsize(file_path)
 
+
 def download_pdf_from_set(file_path, out_path):
     paper_ids = set()
-    for data in open(file_path, 'r', encoding='utf-8'):
+    for data in open(file_path, "r", encoding="utf-8"):
         d = json.loads(data)
         paper_ids.add(d["id"])
     print(f"Total papers: {len(paper_ids)}")
@@ -44,12 +48,16 @@ def download_pdf_from_set(file_path, out_path):
             size = get_file_size(file_path)
             sizes.append(size)
             download_times.append(duration)
-            print(f"Downloaded {item} in {duration:.2f} seconds, size: {size/1024/1024:.2f} MB")
+            print(
+                f"Downloaded {item} in {duration:.2f} seconds, size: {size/1024/1024:.2f} MB"
+            )
         time.sleep(3)
     if sizes:
         avg_time = sum(download_times) / len(download_times)
         avg_size = sum(sizes) / len(sizes)
-        print(f"Total downloads: {len(sizes)}, average download time: {avg_time:.2f} seconds, average paper size: {avg_size/1024/1024:.2f} MB")
+        print(
+            f"Total downloads: {len(sizes)}, average download time: {avg_time:.2f} seconds, average paper size: {avg_size/1024/1024:.2f} MB"
+        )
 
 
 if __name__ == "__main__":

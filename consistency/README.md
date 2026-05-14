@@ -19,7 +19,7 @@ All displayed metrics are normalized to the `0-1` range and rounded to four deci
 ## Data Roles
 
 ```text
-consistency_example/
+consistency/
   consistency.py
   pairwise_demo.json
   Model_A/

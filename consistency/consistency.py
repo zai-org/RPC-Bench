@@ -12,7 +12,6 @@ import pandas as pd
 from scipy.stats import pearsonr, spearmanr
 from sklearn.metrics import roc_auc_score
 
-
 JSON_BLOCK_RE = re.compile(r"```json\s*(.*?)\s*```", re.DOTALL)
 RATING_RE_TEMPLATE = r'"{key}"\s*:\s*\{{[^}}]*?"rating"\s*:\s*"?([-+]?\d+(?:\.\d+)?)"?'
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -136,7 +135,9 @@ def load_pairwise_file(
     return pairs_bt, pairwise_items, sorted(models)
 
 
-def fit_bt_scores(pairs_bt: Sequence[Tuple[str, str]], models: Sequence[str]) -> pd.Series:
+def fit_bt_scores(
+    pairs_bt: Sequence[Tuple[str, str]], models: Sequence[str]
+) -> pd.Series:
     """Fit Bradley-Terry scores for the human pairwise data."""
     models = list(models)
     if not models:
@@ -240,7 +241,9 @@ def compare_versions(
             dtype=float,
         )
 
-        common_models = [m for m in models if m in avg_scores.index and m in human_bt_scores.index]
+        common_models = [
+            m for m in models if m in avg_scores.index and m in human_bt_scores.index
+        ]
         if len(common_models) >= 2:
             auto_vals = avg_scores.loc[common_models].to_numpy(dtype=float)
             human_vals = human_bt_scores.loc[common_models].to_numpy(dtype=float)
@@ -271,7 +274,9 @@ def compare_versions(
 
     results_df = pd.DataFrame(results)
     if not results_df.empty:
-        results_df = results_df[["setting", "Pearson_BT", "Spearman_BT", "Pairwise_auc", "avg"]]
+        results_df = results_df[
+            ["setting", "Pearson_BT", "Spearman_BT", "Pairwise_auc", "avg"]
+        ]
         results_df[["Pearson_BT", "Spearman_BT", "Pairwise_auc", "avg"]] = results_df[
             ["Pearson_BT", "Spearman_BT", "Pairwise_auc", "avg"]
         ].round(4)
@@ -331,7 +336,9 @@ def main() -> None:
     if not Path(args.pairwise_file).is_file():
         raise SystemExit(f"Pairwise file not found: {args.pairwise_file}")
 
-    results_df, best_setting_row = compare_versions(score_files_list, args.pairwise_file)
+    results_df, best_setting_row = compare_versions(
+        score_files_list, args.pairwise_file
+    )
 
     print(results_df.to_string(index=False, float_format=lambda value: f"{value:.4f}"))
     if best_setting_row is not None:
@@ -343,7 +350,9 @@ def main() -> None:
                 print(f"{key}: {value}")
 
     if args.output_csv:
-        results_df.to_csv(args.output_csv, index=False, encoding="utf-8-sig", float_format="%.4f")
+        results_df.to_csv(
+            args.output_csv, index=False, encoding="utf-8-sig", float_format="%.4f"
+        )
 
 
 if __name__ == "__main__":
