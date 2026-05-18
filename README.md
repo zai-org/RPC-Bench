@@ -63,7 +63,7 @@ python pdf2image.py
 
 #### Processed Data Download
 
-You may also download our processed data directly from [Google Drive](https://drive.google.com/drive/folders/1J__Hp0PPE6VATlyMRaM6dIZST8H1zTPj?usp=sharing), [Hugging Face](https://huggingface.co/), or [ModelScope](https://www.modelscope.cn/).
+You may also download our processed data directly from [Google Drive](https://drive.google.com/drive/folders/1J__Hp0PPE6VATlyMRaM6dIZST8H1zTPj?usp=sharing), [Hugging Face](https://huggingface.co/datasets/zai-org/RPC-Bench), or [ModelScope](https://modelscope.cn/datasets/ZhipuAI/RPC-Bench).
 The processed data includes:
 
 - `pdf/`: original paper PDFs.
