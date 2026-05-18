@@ -6,7 +6,7 @@
 
 <p align="center">
     🌐 <a href="https://rpc-bench.github.io/" target="_blank">Project Page</a> •
-    📖 <a href="https://arxiv.org/abs/2601.14289" target="_blank">Paper</a>
+    📖 <a href="https://arxiv.org/abs/2601.14289" target="_blank">Paper</a> •
     🤗 <a href="https://huggingface.co/datasets/zai-org/RPC-Bench" target="_blank">Hugging Face</a> •
     🧭 <a href="https://modelscope.cn/datasets/ZhipuAI/RPC-Bench" target="_blank">ModelScope</a>
 </p>
@@ -70,6 +70,21 @@ The processed data includes:
 - `md/`: Markdown files parsed from each paper by MinerU, used as text input for LLM-oriented evaluation.
 - `parse/`: full MinerU parsing outputs, including structured layout and content artifacts.
 - `vlm/`: page images rendered from PDFs with PyMuPDF at 200 DPI, used for VLM-oriented evaluation.
+
+The examples below show how to download only `md/` and `vlm/`, which are sufficient for running the default LLM and VLM inference scripts.
+
+**Option 1: Download from Hugging Face**
+```bash
+pip install -U huggingface_hub
+hf download zai-org/RPC-Bench md/test/ vlm/test/ --repo-type dataset --local-dir ./benchmark
+```
+
+**Option 2: Download from ModelScope**
+
+```bash
+pip install -U modelscope
+modelscope download --dataset ZhipuAI/RPC-Bench --include "md/test/**" "vlm/test/**" --local_dir ./benchmark
+```
 
 ### 🧩 Consistency Evaluation
 
